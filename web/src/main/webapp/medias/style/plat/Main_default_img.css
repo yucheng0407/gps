@@ -1,0 +1,47 @@
+/*工作流时间轴*/
+.mod_fixNav{display: block;width: 35px;height: 35px;line-height: 35px;position: fixed;top: 0px;right: 0px;z-index: 999;background: #0e9aef;color: #fff;font-size: 14px;border-radius: 0px 0 0 24px;cursor: pointer;text-align: center;}
+.mod_fixNav i{color: #fff;font-size: 20px;}
+.mod_fixNav:hover{background: #2ba9f5;}
+.workflow_timeline_box{display: block;width: 400px;height: 100%;position: fixed;top: 0;right: 0;z-index: 999;background: #fff;border-left: 1px solid #cecece;box-shadow: -3px 0 6px #e0e0e0;}
+.workflow_timeline_top{width: 100%;height: 40px;line-height: 40px;background: #fff;border-bottom: 1px solid #e6e6e6;}
+.workflow_timeline_top h1{float: left;color: #333;font-size: 14px;margin-left: 10px;}
+.workflow_timeline_top i.closer,.workflow_timeline_top i.switch{float: right;font-size: 18px;color: #cecece;margin: 0 10px;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.workflow_timeline_top i.closer:hover{color: #FF5722;}
+.workflow_timeline_top i.switch:hover{color: #888;}
+.ibox_content_timeline_box{padding: 25px 10px;overflow-x: hidden;overflow-y: auto;}
+.timeline_item{width: 100%;}
+.col_xs_left{float: left;width: 60px;position: relative;text-align: right;padding: 40px 8px 0 15px;}
+.col_xs_left strong{color: #666;font-weight: normal;font-size: 12px;}
+.col_xs_left i.end_icon{position: absolute;top: 50px;right: -14px;z-index: 999;color: #FE5334;font-size: 28px;}
+.col_xs_left i.reverse_order_icon{top: 0;}
+.briefcase{width: 60px;height: 32px;line-height: 32px;position: absolute;top: 0;right: 0;background: #29abe2;color: #fff;font-size: 12px;font-weight: normal;text-align: center;overflow: hidden;border-radius: 30px 0 0 30px;}
+.briefcase i{color: #fff;font-size: 16px;margin-right: 3px;}
+.initiate,.bj{background: #fff;color: #333;border: 1px solid #e6e6e6;border-right: 0 none;}
+.initiate i{color: #43d351;}
+.col_xs_right{float: left;width: 258px;min-height: 100px;border-left: 1px solid #e6e6e6;border-top: 1px solid #e6e6e6;position: relative;padding: 0 10px 10px;}
+.no_top_border{border-top: 0;}
+.m_b_xs{float: left;width: 100%;height: 32px;line-height: 32px;}
+.m_b_xs h1{float: left;font-size: 14px;color: #333;}
+.m_b_xs h2{float: left;font-size: 14px;color: #f7931e;}
+.m_b_xs h3{float: left;font-size: 14px;color: #333;margin: 42px 0 0 10px;}
+.m_b_xs span{float: right;font-size: 12px;color: #aaaaaa;}
+.m_b_xs b{float: left;display: block;width: auto;height: 20px;line-height: 20px;padding: 0 8px;color: #fff;text-align: center;margin: 6px 0 0 10px;font-weight: normal;border-radius: 2px;}
+.reverse_order_h h3{margin: -8px 0 0 10px;}
+.col_xs_right p{font-size: 14px;color: #666;margin: 0 0 10px;line-height: 22px;}
+.col_xs_right p.bm{color: #aaaaaa;font-size: 12px;line-height: 16px;}
+.col_xs_right p.attachment_for{color: #999;font-size: 12px;line-height: 16px;}
+.col_xs_right p i.attachment_icon{color: #cecece;font-size: 16px;margin-right: 5px;}
+.col_xs_right p a{color: #0e9aef;font-size: 14px;font-weight: bold;}
+.col_xs_right p a:hover{text-decoration: underline;}
+.vertical_timeline_content{width: auto;background: #f2f2f2;padding: 10px;border-radius: 2px;}
+.vertical_timeline_content h2{width: 100%;color: #999;font-size: 14px;font-weight: normal;}
+.xyjsp_box{width: auto;height: auto;position: relative;padding-left: 50px;margin-top: 10px;}
+.xyjsp_name{position: absolute;top: 0px;left: 0px;width: 40px;height: 40px;line-height: 40px;background: #29abe2;color: #fff;font-size: 14px;text-align: center;border-radius: 50%;overflow: hidden;}
+.js_end{min-height: 50px;}
+.reverse_order{border-top: 0 none;}
+.ty{background: #37c061;}
+.tj{background: #50a0d1;}
+.th{background: #de6654;}
+.ch{background: #e2af4d;}
+.zb{background: #4ec3f1;}
+.bj{background: #fff;}

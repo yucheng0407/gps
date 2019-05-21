@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用于传递消息的中间页</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var param = RX.page.param;
+    if(param.type === "workflow"){
+        //流程页进入，一般是
+        parent.parent.parent.workflowHandler({
+            //动作
+            action: param.action,
+            //提示信息
+            alertMsg: param.alertMsg
+        })
+    }
+
+</script>
+</body>
+</html>

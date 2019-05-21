@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>版块主页</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        .right_search {
+            float: right;
+            margin: 10px 10px 0 5px;
+        }
+        .xhe_default table {
+            background: #fff !important
+        }
+    </style>
+</head>
+<body>
+<!--基础布局-->
+<div class="base_box">
+    <div class="no_p_box" style="padding: 10px;">
+        <div class="forum_tab">
+            <ul class="forum_tab_ul">
+                <li>
+                    <a id="zy" class="dj">主页</a>
+                </li>
+                <li>
+                    <a id="jp">精品</a>
+                </li>
+                <li>
+                    <a id="sc">收藏</a>
+                </li>
+            </ul>
+            <input id="btn_return" class="query_buttonB right_search" type="button" value="返回"/>
+            <input id="btn_post" class="query_button right_search" type="button" value="发帖"/>
+            <div class="search">
+                <input type="text" class="searchinput" placeholder="请输入关键词"/>
+                <i title="搜索" class="iconfont" onclick="searchTopic()">&#xe613;</i>
+            </div>
+        </div>
+        <div class="lib_Contentbox">
+            <div id="tab_zy"></div>
+            <div id="tab_jp" style="display: none"></div>
+            <div id="tab_sc" style="display: none"></div>
+        </div>
+    </div>
+    <div id="topicEdit">
+        <script type="text/template">
+            <div class="no_p_box" style="padding: 10px; margin: 0px;">
+                <table class="forum_table" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="80px"/>
+                        <col width=""/>
+                    </colgroup>
+                    <tr>
+                        <th>发帖主题</th>
+                        <td>
+                            <div class="element_box">
+                                <input class="i_text" type="text" model="title"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>发帖内容</th>
+                        <td>
+                            <div class="element_e">
+                                <textarea model="content"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="p_button_box">
+                    <input type="button" value="发帖" class="c_button" onclick="saveTopic()"/>
+                </div>
+            </div>
+        </script>
+    </div>
+</div>
+
+<script type="text/template" id="topicGrid">
+    <div class="list_box">
+        <table cellpadding="0" cellspacing="0" border="0" class="forum_title">
+            <colgroup>
+                <col width="80px"/>
+                <col/>
+                <col width="250px"/>
+            </colgroup>
+            {{#each pageList:index}}
+            <tr>
+                <th>
+                    <p class="plnum">{{COMMENT_NUM}}</p>
+                    <p class="pl">评论</p>
+                </th>
+                <td>
+                    <div class="forum_content">
+                        {{#if TOP == "1"}}<span class="zd">置顶</span>{{/if}}
+                        {{#if BEST == "1"}}<span class="jp">精品</span>{{/if}}
+                        <a on-click="showTopicDetail($keypath)">{{TITLE}}</a>
+                        <p class="tznr">{{{SHORT_CONTENT}}}</p>
+                    </div>
+                </td>
+                <td>
+                    <div class="forum_content">
+                        <p><span class="ftr">发帖人：</span>{{AUTHOR}}</p>
+                        <p><span>查看人数：</span>{{VIEW_NUM}}人</p>
+                        <p><span>发帖日期：</span>{{CJSJ}}</p>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</script>
+
+<!--文件加载-->
+<script type="text/javascript">
+    // 设置初始高度占满整个页面
+    $(".lib_Contentbox").innerHeight($(window).height());
+    RX.load({
+        template: "grid",
+        module: ["/medias/plugin/xheditor/xheditor-1.1.14-zh-cn.min.js",
+            "/medias/src/plat/forum/boardMain_config.js",
+            "/medias/src/plat/forum/boardMain.js"
+        ]
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div class="form_box" style="padding: 0">
+    <script type="text/template">
+        <div>
+            {{#if latest&&latest.length>0}}
+            <div class="list_box">
+                <table class="list" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col />
+                        <col width="60px"/>
+                        <col width="90px"/>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>子流程启动人</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    {{#each latest}}
+                    <tr>
+                        <td>
+                            <span class="span_show_ellipsis"
+                                  title="{{STARTUP_USER||''}}">{{STARTUP_USER||''}}</span>
+                        </td>
+                        <td>
+                            <span class="span_show_ellipsis" title="{{dict(STATUS,'getWfInstStatus()')||''}}">{{dict(STATUS,'getWfInstStatus()')||''}}</span>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" class="viewFlowImage active_1" data-wfinstid="{{ID}}">查看流程图</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{/if}}
+            {{#if nodeInstanceList&&nodeInstanceList.length>1}}
+            <a href="javascript:void(0)" class="more-history">查看更多流转历史</a>
+            {{/if}}
+        </div>
+    </script>
+</div>

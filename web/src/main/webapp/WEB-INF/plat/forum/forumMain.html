@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>论坛主页</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="base_box">
+    <script type="text/template">
+        <div>
+            <div class="no_p_box">
+                <div class="forum_index_top">
+                    <div class="forum_index_i">
+                        <i class="iconfont">{{{"&#xe633;"}}}</i>
+                    </div>
+                    <h1>欢迎来到内网论坛</h1>
+                    <h2>你可以选择你感兴趣的内容</h2>
+                </div>
+            </div>
+            <div class="no_p_box" style="padding: 10px;margin: 0px;">
+                <div class="page_title">
+                    <h1>论坛动态</h1>
+                </div>
+                <div class="forum_index">
+                    <table cellpadding="0" cellspacing="0" border="0" class="forum_bk">
+                        <colgroup>
+                            <col width="80px"/>
+                            <col/>
+                            <col width="250px"/>
+                            <col width="250px"/>
+                            <col width="250px"/>
+                        </colgroup>
+                        {{#if boardList && boardList.length}}
+                        {{#each boardList:index}}
+                        <tr>
+                            <th>
+                                <i class="iconfont">{{{ICON || "&#xe675;")}}}</i>
+                            </th>
+                            <td>
+                                <div class="forum_content_bk">
+                                    <a on-click="showBoardMain($keypath)">{{TITLE}}</a>
+                                    <p class="tznr">主题：{{TOPIC_NUM}}，帖数：{{POST_NUM}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="forum_content_bk">
+                                    <p><span>最后发帖人：</span>{{LAST_POST_USER}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="forum_content_bk">
+                                    <p><span>查看人数：</span>{{VIEW_USER_NUM}}人</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="forum_content_bk">
+                                    <p><span>最后发帖时间：</span>{{LAST_POST_TIME}}</p>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        {{else}}
+                        <tr>
+                            <td align="center" colspan="5" class="no_data">无数据</td>
+                        </tr>
+                        {{/if}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/forum/forumMain.js"
+        ]
+    });
+</script>
+</body>
+</html>

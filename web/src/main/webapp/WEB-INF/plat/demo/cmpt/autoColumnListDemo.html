@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>动态列表格案例</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+
+        .oper_a{
+            text-decoration: none !important;
+            color:slategray !important;
+        }
+    </style>
+</head>
+<body>
+<div class="base_box">
+    <script type="text/template">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>动态列表格案例</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th >
+                        <a class="oper_a" on-click="addItem()"><i class="iconfont">{{{'&#xe62c;'}}}</i></a>
+                    </th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <th>
+                        <b style="float:left;margin-left:10px;color:slategray;">{{order+1}}</b>
+                        {{#if unuse}}
+                        <a class="oper_a" on-click="useItem($keypath)"><i class="iconfont" style="color:gray">{{{'&#xe6c4;'}}}</i></a>
+                        {{else}}
+                        <a class="oper_a" on-click="unuseItem($keypath)"><i class="iconfont" style="color:#0e9aef">{{{'&#xe6c3;'}}}</i></a>
+                        {{/if}}
+                        {{#if order >= 2}}
+                        <a class="oper_a" on-click="removeItem($keypath)" style="margin-left:10px;"><i class="iconfont">{{{'&#xe609;'}}}</i></a>
+                        {{/if}}
+                    </th>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                <tr>
+                    <th><b>*</b>姓名</th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="name"/>
+                        </div>
+                    </td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                <tr>
+                    <th><b>*</b>开始日期</th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_date" model="startDate"/>
+                        </div>
+                    </td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                <tr>
+                    <th><b>*</b>结束日期</th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="endDate"/>
+                        </div>
+                    </td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                <tr>
+                    <th><b>*</b>类型</th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <td>
+                        <div class="element_box ele_0">
+                            <select title="" class="i_select" model="type"/>
+                        </div>
+                    </td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                <tr>
+                    <th><b>*</b>金额</th>
+                    {{#each list:index}}
+                    {{#if sfyxSt !== "UNVALID"}}
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="money"/>
+                        </div>
+                    </td>
+                    {{/if}}
+                    {{/each}}
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+</div>
+
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/demo/cmpt/autoColumnListDemo_config.js",
+            "/medias/src/plat/demo/cmpt/autoColumnListDemo.js"]
+    });
+</script>
+
+</body>
+</html>

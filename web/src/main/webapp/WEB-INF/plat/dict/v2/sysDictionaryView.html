@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>系统字典表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: [
+                "treeGrid"
+            ]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--表单模板-->
+<script type="text/template" id="sysDictForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>字典基本信息</h1>
+            </div>
+            <table class="form_view" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th>字典编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dictCode||''}}">{{dictCode||''}}</span>
+                    </td>
+                    <th>字典名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{dictName||''}}">{{dictName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>描述</th>
+                    <td colspan="3">
+                        <span class="span_show_ellipsis" title='{{{html(description||"")}}}'>{{{html(description||"")}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--系统字典项表-->
+        <DictItemTreeGrid ref="dictItemTreeGrid" list="{{sysDictionaryItemList}}"/>
+    </div>
+</script>
+<!--系统字典项表子模板-->
+<script type="text/template" id="dictItem">
+    <div class="p_box">
+        <div class="page_title"><h1>字典值列表</h1>
+            <ul class="action_button to_right">
+                <li><a on-click="addRootRow()"><i class="iconfont">{{{"&#xe62a;"}}}</i>新增</a></li>
+            </ul>
+        </div>
+        <div class="query_box"></div>
+        <table id="tg" style="width: 100%;"></table>
+    </div>
+</script>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt"></div>
+
+<!-- JS加载 -->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "treeGrid",
+            "/medias/src/plat/dict/v2/sysDictionaryView_config.js",
+            "/medias/src/plat/dict/v2/sysDictionaryView.js"
+        ]
+    });
+</script>
+</body>
+</html>

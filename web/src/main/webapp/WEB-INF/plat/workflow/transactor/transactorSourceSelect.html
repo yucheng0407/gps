@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>办理人选择</title>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/Global.css"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/plat/iconfont.css"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="base_box">
+    <div class="no_p_box">
+        <div class="Useroperations" style="border-bottom: 1px solid #e8e8e8;">
+            <ul class="dh_nav">
+                <li>
+                    <a href="javascript:void(0)" onclick="RX.page.closeAll()"> 环节办理人</a>
+                </li>
+                <li class="dh_jt"></li>
+                <li>
+                    选择来源
+                </li>
+                <li class="dh_jt"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="list_box">
+        <ul class="list_tit">
+        </ul>
+    </div>
+    <div class="p_button_box">
+        <input type="button" value="确定" class="c_button" id="confirmBtn"/><input type="button" value="取消"
+                                                                                 class="n_button" id="cancelBtn"/>
+    </div>
+</div>
+<script>
+    RX.page.resize = function () {
+    };
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/workflow/transactor/transactorSourceSelect.js"]
+    });
+</script>
+</body>
+</html>

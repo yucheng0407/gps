@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: [
+                "/medias/plugin/intro/introjs.css",
+                "layer"
+            ]
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        .downLink {
+            position: relative;
+        }
+
+        .downUl {
+            z-index: 3;
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: -10px;
+            width: 50px;
+            height: 120px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 0;
+            padding: 5px 10px;
+            border-radius: 0 0 2px 2px;
+            box-shadow: 0px 1px 4px 0 #cecece;
+        }
+
+        .downUl li {
+            line-height: 20px;
+        }
+
+        .downUl li a {
+            float: left;
+            margin: 5px;
+            margin-right: 0px;
+        }
+
+        .downUl li a.selected {
+            color: #0e9aef;
+        }
+
+        .downLink:hover .downUl {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        function setTab(name, cursel, n) {
+            for (i = 1; i <= n; i++) {
+                var menu = document.getElementById(name + i);
+                var con = document.getElementById("con_" + name + "_" + i);
+                menu.className = i == cursel ? "ts" : "";
+                con.style.display = i == cursel ? "block" : "none";
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div class="homepage">
+    <div class="m_box">
+        <div class="operation_box" style="border: 0;">
+            <ul class="action_button">
+                <li id="helpBtn">
+                    <a href="#none" onclick="runIntro()"><i class="iconfont">&#xe62a;</i>帮助</a>
+                </li>
+                <li data-step="5">
+                    <a href="#none" onclick="chooseFlow()"><i class="iconfont">&#xe62a;</i>发起工作</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m_box">
+        <div class="b_box">
+            <div class="x_box">
+                <div class="boxcenter" id="qkArea" data-step="1">
+                    <script type="template">
+                        <div class="hdd">
+                            <div class="boxcentertop">
+                                <h1>工作情况</h1>
+                                <a href="#none" on-click="clickMore()"><i class="iconfont">{{{'&#xe6a4;'}}}</i></a>
+                                <span class="split"></span>
+                                <a href="#none" class="downLink"><i class="iconfont">{{{'&#xe604;'}}}</i>{{timeName}}
+                                    <ul class="downUl">
+                                        <li><a href="#none" on-click="changeTime('day','一天内')" {{#if
+                                               timeType=='day'}}class="selected"{{/if}}><i class="iconfont"></i>一天内</a>
+                                        </li>
+                                        <li><a href="#none" on-click="changeTime('week','一周内')" {{#if
+                                               timeType=='week'}}class="selected"{{/if}}><i class="iconfont"></i>一周内</a>
+                                        </li>
+                                        <li><a href="#none" on-click="changeTime('month','一月内')" {{#if
+                                               timeType=='month'}}class="selected"{{/if}}><i
+                                                class="iconfont"></i>一月内</a></li>
+                                        <li><a href="#none" on-click="changeTime('year','一年内')" {{#if
+                                               timeType=='year'}}class="selected"{{/if}}><i
+                                                class="iconfont"></i>一年内</a></li>
+                                    </ul>
+                                </a>
+                            </div>
+                            <div class="boxbody">
+                                <div class="ibox_content">
+                                    <ul class="widget_wc_list">
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe631;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{fqgzNum}}</h3>
+                                                <h3 class="widget_wc_away">发起工作</h3></a>
+                                        </li>
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe631;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{wcgzNum}}</h3>
+                                                <h3 class="widget_wc_away">完成工作</h3></a>
+                                        </li>
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe638;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{gzwclNum}}%</h3>
+                                                <h3 class="widget_wc_away">工作完成率</h3></a>
+                                        </li>
+                                        <li style="width:1000px;height:1px;margin: 0px;"></li>
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe631;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{dbybrwNum}}</h3>
+                                                <h3 class="widget_wc_away">全部任务</h3></a>
+                                        </li>
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe631;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{ybrwNum}}</h3>
+                                                <h3 class="widget_wc_away">已办任务</h3></a>
+                                        </li>
+                                        <li>
+                                            <a href="#none"><span><i class="iconfont">{{{'&#xe638;'}}}</i></span>
+                                                <h3 class="widget_wc_home">{{rwbllNum}}%</h3>
+                                                <h3 class="widget_wc_away">任务办理率</h3></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="b_box">
+            <div class="x_box">
+                <div class="boxcenter" id="dbArea" data-step="2">
+                    <script type="template">
+                        <div class="hdd">
+                            <div class="boxcentertop">
+                                <ul class="tab_holder_remind">
+                                    <li>
+                                        <a href="#none" onclick="setTab('one',1,2)" id="one1" class="ts">待办任务</a>
+                                    </li>
+                                    <li>
+                                        <a href="#none" onclick="setTab('one',2,2)" id="one2">拟办工作</a>
+                                    </li>
+                                </ul>
+                                <a href="#none" on-click="clickMore()"><i class="iconfont">{{{'&#xe6a4;'}}}</i></a>
+                            </div>
+                            <div class="boxbody">
+                                <div class="lib_Contentbox_remind">
+                                    <div id="con_one_1">
+                                        <div class="ibox_content">
+                                            {{#if dblist && dblist.length > 0}}
+                                            <ul class="coat">
+                                                {{#each dblist:index}}
+                                                {{#if index < maxNum}}
+                                                <li on-click="clickRow($keypath)">
+                                                    <i class="iconfont">{{{'&#xe612;'}}}</i>
+                                                    <a href="#none">{{TITLE}}</a>
+                                                    <span>{{date(time,'yyyy-MM-dd HH:mm')}}</span>
+                                                </li>
+                                                {{/if}}
+                                                {{/each}}
+                                            </ul>
+                                            {{else}}
+                                            <p>
+                                                暂无数据
+                                            </p>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    <div id="con_one_2" style="display: none">
+                                        <div class="ibox_content">
+                                            {{#if nblist && nblist.length > 0}}
+                                            <ul class="coat">
+                                                {{#each nblist:index}}
+                                                {{#if index < maxNum}}
+                                                <li on-click="clickRow($keypath)">
+                                                    <i class="iconfont">{{{'&#xe612;'}}}</i>
+                                                    <a href="#none">{{TITLE}}</a>
+                                                    <span>{{date(time,'yyyy-MM-dd HH:mm')}}</span>
+                                                </li>
+                                                {{/if}}
+                                                {{/each}}
+                                            </ul>
+                                            {{else}}
+                                            <p>
+                                                暂无数据
+                                            </p>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m_box">
+        <div class="b_box">
+            <div class="x_box">
+                <div class="boxcenter" id="zbArea" data-step="3">
+                    <script type="template">
+                        <div class="hdd">
+                            <div class="boxcentertop">
+                                <h1>我发起的工作</h1>
+                                <a href="#none" on-click="clickMore()"><i class="iconfont">{{{'&#xe6a4;'}}}</i></a>
+                            </div>
+                            <div class="boxbody">
+                                <div class="ibox_content">
+                                    {{#if list && list.length > 0}}
+                                    <ul class="coat">
+                                        {{#each list:index}}
+                                        {{#if index < maxNum}}
+                                        <li on-click="clickRow($keypath)">
+                                            <i class="iconfont">{{{'&#xe612;'}}}</i>
+                                            <a href="#none">{{TITLE}}</a>
+                                            <span>{{date(time,'yyyy-MM-dd HH:mm')}}</span>
+                                        </li>
+                                        {{/if}}
+                                        {{/each}}
+                                    </ul>
+                                    {{else}}
+                                    <p>
+                                        暂无数据
+                                    </p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="b_box">
+            <div class="x_box">
+                <div class="boxcenter" id="ybArea" data-step="4">
+                    <script type="template">
+                        <div class="hdd">
+                            <div class="boxcentertop">
+                                <h1>我参与的工作</h1>
+                                <a href="#none" on-click="clickMore()"><i class="iconfont">{{{'&#xe6a4;'}}}</i></a>
+                            </div>
+                            <div class="boxbody">
+                                <div class="ibox_content">
+                                    {{#if list && list.length > 0}}
+                                    <ul class="coat">
+                                        {{#each list:index}}
+                                        {{#if index < maxNum}}
+                                        <li on-click="clickRow($keypath)">
+                                            <i class="iconfont">{{{'&#xe612;'}}}</i>
+                                            <a href="#none">{{TITLE}}</a>
+                                            <span>{{date(time,'yyyy-MM-dd HH:mm')}}</span>
+                                        </li>
+                                        {{/if}}
+                                        {{/each}}
+                                    </ul>
+                                    {{else}}
+                                    <p>
+                                        暂无数据
+                                    </p>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "workflow",
+            "/medias/plugin/intro/intro.js",
+            '/medias/plugin/layer/layer.js',
+            "/medias/src/plat/workflow/platform/flowCenterStyleA.js"
+        ]
+    });
+</script>
+</body>
+
+</html>

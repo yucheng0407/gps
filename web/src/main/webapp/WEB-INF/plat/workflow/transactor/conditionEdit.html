@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>限定条件编辑</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({template: "platMain"});
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="base_box">
+    <div class="no_p_box">
+        <div class="Useroperations" style="border-bottom: 1px solid #e8e8e8;">
+            <ul class="dh_nav">
+                <li>
+                    <a href="javascript:void(0)" onclick="RX.page.closeAll()"> 环节办理人</a>
+                </li>
+                <li class="dh_jt secondPos" style="display: none"></li>
+                <li style="display: none" class="secondPos">
+                    <a href="javascript:void(0)" onclick="RX.page.close()">选择来源</a>
+                </li>
+                <li class="dh_jt"></li>
+                <li>
+                    限定条件
+                </li>
+                <li class="dh_jt"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="p_box">
+        <script type="text/template">
+            <div>
+                <div class="page_title">
+                    <h1>限定条件</h1>
+                </div>
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="160px">
+                        <col width="">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th><b>*</b>用户限定</th>
+                        <td colspan="2">
+                            <div class="element_box">
+                                <!--<select class="i_select" model="userCondition">-->
+                                <!--<option value=""></option>-->
+                                <!--</select>-->
+                                <div model="userCondition"></div>
+                                <!--<input type="hidden" model="objectId"/>-->
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><b>*</b>机构限定</th>
+                        <td colspan="2">
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="organCondition">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    {{#if userCondition&&organCondition}}
+                    <tr>
+                        <th><b>*</b>包含{{dict(userCondition,'USERCONDITION')}}</th>
+                        <td colspan="2">
+                            <div class="element_box ele_0">
+                                <select class="i_select" model="selfIncluded">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/if}}
+                    <tr>
+                        <th><b>*</b>名称</th>
+                        <td colspan="2">
+                            <div class="element_box">
+                                {{#if userCondition}}
+                                {{dict(userCondition,'USERCONDITION')+(organCondition=='NOLIMIT'?'':dict(organCondition,'ORGANCONDITION'))}}
+                                {{/if}}
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </script>
+    </div>
+    <!-- 下面按钮 -->
+    <div class="p_button_box">
+        <input type="button" value="保存" class="c_button" id="save"/><input type="button" value="取消"
+                                                                           onclick="RX.page.close();" class="n_button"/>
+    </div>
+    <script type="text/javascript">
+        RX.page.resize = function () {
+        };
+        RX.load({
+            template: "form",
+            module: [
+                "/medias/src/plat/workflow/transactor/conditionEdit_config.js",
+                "/medias/src/plat/workflow/transactor/conditionEdit.js"]
+        });
+    </script>
+
+</div>
+</body>
+</html>

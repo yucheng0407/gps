@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>版块列表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+        .xhe_default table {
+            background: #fff !important
+        }
+        .content_list {
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+<!--基础布局-->
+<div class="base_box">
+    <div class="no_p_box" style="padding: 10px;margin: 0px;">
+        <div id="topic" class="no_p_box">
+            <script type="text/template">
+                <div class="content_title">
+                    <h1>{{topic.title}}</h1>
+                    <ul class="content_title_input">
+                        <li>
+                            <a on-click="rtnBoardMain()">返回</a>
+                        </li>
+                        {{#if isModerator}}
+                        <li>
+                            {{#if topic.top}}<a on-click="topTopic()" class="zd">取消置顶</a>{{else}}<a on-click="topTopic()">置顶</a>{{/if}}
+                        </li>
+                        <li>
+                            {{#if topic.best}}<a on-click="bestTopic()" class="jp">取消精品</a>{{else}}<a on-click="bestTopic()">设为精品</a>{{/if}}
+                        </li>
+                        {{/if}}
+                        <li>
+                            {{#if isCollect}}<a on-click="collectTopic()" class="sc">取消收藏</a>{{else}}<a on-click="collectTopic()">收藏</a>{{/if}}
+                        </li>
+                        <li>
+                            <a on-click="replyTopic()">回复</a>
+                        </li>
+                    </ul>
+                </div>
+            </script>
+        </div>
+        <div id="followList" class="no_p_box">
+            <script type="text/template">
+                <div class="list_box">
+                    <div class="content_list">
+                        {{#if pageList && pageList.length}}
+                        {{#each pageList:index}}
+                        <div class="content_box">
+                            <div class="forum_left_box">
+                                {{#if MASTER == "1"}}<img src="${ctxPath}/medias/style/plat/gray/css/image/帖主.png" class="tiez" />{{/if}}
+                                <div class="forum_left">
+                                    <img src="${ctxPath}/medias/style/plat/image/common/default_handsome.jpg" />
+                                    <table border="0" cellspacing="0" cellpadding="0" class="forum_left_table">
+                                        <col width="75px" />
+                                        <col />
+                                        <tr>
+                                            <th>姓名：</th>
+                                            <td>{{USER_NAME}}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>性别：</th>
+                                            <td>{{USER_SEX}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="forum_right_box" style="float: none">
+                                <div class="forum_right">
+                                    <p>{{{CONTENT}}}</p>
+                                </div>
+                            </div>
+                            <ul class="huifu">
+                                <li>{{FLOOR}}楼</li>
+                                <li>{{CJSJ}}</li>
+                                {{#if MASTER == "1"}}
+                                <li>
+                                    <a on-click="replyTopic()">回复</a>
+                                </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </script>
+        </div>
+        <div id="followEdit" class="no_p_box">
+            <script type="text/template">
+                <div class="hf_box">
+                    <div class="hf">
+                        <div class="hf_top">
+                            <h1>发表回复</h1>
+                        </div>
+                    </div>
+                    <table class="forum_table" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <div class="element_e">
+                                <textarea model="content"></textarea>
+                            </div>
+                        </tr>
+                    </table>
+                    <a onclick="saveFollow()">回复</a>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    $('#followList').innerHeight($(window).height());
+    RX.load({
+        template: "grid",
+        module: ["/medias/plugin/xheditor/xheditor-1.1.14-zh-cn.min.js",
+            "/medias/src/plat/forum/topicDetail_config.js",
+            "/medias/src/plat/forum/topicDetail.js"
+        ]
+    });
+</script>
+</body>
+</html>

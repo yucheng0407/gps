@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>角色编辑页面</title>
+    <script type="text/javascript" src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+
+        }
+    </style>
+</head>
+
+<body>
+<div class="form_box">
+    <script type="text/template" id="roleForm">
+        <div class="p_box">
+            <div class="page_title">
+                <h1>设备基本信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="120px">
+                    <col width="">
+                    <col width="120px">
+                    <col width="">
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th><b>*</b>设备名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{sbmc}}">{{sbmc}}</span>
+                    </td>
+                    <th><b>*</b>设备编码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{zyid}}">{{zyid}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>所属派出所名称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{sspcsmc}}">{{sspcsmc}}</span>
+                    </td>
+                    <th><b>*</b>所属派出所代码</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{sspcsdm}}">{{sspcsdm}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><b>*</b>设备简称</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{jc}}">{{jc}}</span>
+                    </td>
+                    <th><b>*</b>设备类型</th>
+                    <td>
+                        <div class="element_box ele_0">
+                            <span class="span_show_ellipsis" title="{{dict(sblx, 'getSblx()')}}">{{dict(sblx, 'getSblx()')}}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>角色备注</th>
+                    <td colspan="3">
+                        <span class="span_show_multiline" title="{{{html(bz || "")}}}"> {{{html(bz || "")}}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</div>
+<!-- 下面按钮 -->
+<div class="w_button_box">
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["/medias/src/gps/sbxx/sbxxEdit_config.js",
+            "/medias/src/gps/sbxx/sbxxEdit.js"]
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>系统字典表</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: [
+                "treeGrid"
+            ]
+        });
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        a.blue-btn,a.red-btn,a.green-btn{color: #fff;padding: 3px 7px;margin: 0 3px;border-radius: 2px;font-weight: normal;}
+        a.blue-btn:hover,a.red-btn:hover,a.green-btn:hover{text-decoration: none;}
+        a.blue-btn{background: #3c9df9;} /*蓝色*/
+        a.red-btn{background: #dd504c;} /*红色*/
+        a.green-btn{background: #5eb95e;} /*绿色*/
+        a.blue-btn:hover{background: #54aafc;}
+        a.red-btn:hover{background: #e86865;}
+        a.green-btn:hover{background: #6bc96b;}
+    </style>
+</head>
+
+<body>
+<!--基础布局-->
+<div class="form_box"></div>
+
+<!--表单模板-->
+<script type="text/template" id="sysDictForm">
+    <div>
+        <div class="p_box">
+            <div class="page_title">
+                <h1>字典基本信息</h1>
+            </div>
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <th><b>*</b>字典编码</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="dictCode"/>
+                        </div>
+                    </td>
+                    <th><b>*</b>字典名称</th>
+                    <td>
+                        <div class="element_box">
+                            <input title="" type="text" class="i_text" model="dictName"/>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>描述</th>
+                    <td colspan="3">
+                        <div class="element_box">
+                            <textarea title="" class="i_textarea" model="description"></textarea>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--系统字典项表-->
+        <DictItemTreeGrid ref="dictItemTreeGrid" list="{{sysDictionaryItemList}}"/>
+    </div>
+</script>
+
+<!--系统字典项表子模板-->
+<script type="text/template" id="dictItem">
+    <div class="p_box">
+        <div class="page_title"><h1>字典值列表</h1>
+            <ul class="action_button to_right">
+                <li><a on-click="addRootRow()"><i class="iconfont">{{{"&#xe62a;"}}}</i>新增</a></li>
+            </ul>
+        </div>
+        <div class="query_box"></div>
+        <table id="tg" style="width: 100%;"></table>
+    </div>
+</script>
+
+<!-- 底部按钮 -->
+<div class="w_button_box" id="w_butt"></div>
+
+<!-- JS加载 -->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "treeGrid",
+            "/medias/src/plat/dict/v2/sysDictionaryEdit_config.js",
+            "/medias/src/plat/dict/v2/sysDictionaryEdit.js"
+        ],
+        async: false
+    });
+</script>
+</body>
+</html>

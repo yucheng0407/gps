@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>用户表</title>
+    <script src="${ctxPath}/medias/src/plat/form/lib/My97DatePicker/WdatePicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/medias/src/plat/form/lib/My97DatePicker/skin/WdatePicker.css"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: "/medias/style/plat/thinkInput.css"
+        });
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .colorbutton {
+            border: 1px solid #0e9aef;
+            width: 200px;
+            height: 32px;
+            line-height: 32px;
+            color: #fff;
+            background: #0e9aef;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: normal;
+            margin: 10px;
+            padding: 0 15px;
+            border-radius: 2px
+        }
+
+        .lsgj {
+            border-radius: 2px;
+            background: #f8f8f8;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0px 0px 4px #b4b4b4;
+            width: 340px;
+            /*height: 400px;*/
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 20px;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+<iframe name="mapIframe" frameborder="0" width="100%" height="100%" scrolling="auto" src="${ctxPath}/map/map">
+</iframe>
+<div class="lsgj">
+</div>
+<script type="text/template" id="zbxxZbForm">
+    <div>
+        <table cellpadding="0" cellspacing="0" border="0" class="query_form" style="width: auto;">
+            <colgroup>
+                <col width="70px">
+                <col>
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>设备名称</th>
+                <td colspan="1">
+                    <div class="query_element_box" style="width: 150px;"><input class="i_query_text" model="sbmc"
+                                                                                title=""></div>
+                </td>
+            </tr>
+            <tr>
+                <th>开始时间</th>
+                <td colspan="1">
+                    <div class="query_element_box ele_2" style="width: 150px;"><input type="text" id="kssj"
+                                                                                      onfocus="picker1rule(this)"
+                                                                                      class="i_query_text" model="kssj"
+                                                                                      title="">
+                        <div class="auto_ico_box ico_2"><span class="date" title="日期"><i class="iconfont">{{{'&#xe604;'}}}</i></span><span
+                                class="eliminate" title="删除"><i class="iconfont">{{{'&#xe606;'}}}</i></span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>结束时间</th>
+                <td colspan="1">
+                    <div class="query_element_box ele_2" style="width: 150px;"><input type="text" id="jssj"
+                                                                                      onfocus="picker2rule(this)"
+                                                                                      class="i_query_text" model="jssj"
+                                                                                      title="">
+                        <div class="auto_ico_box ico_2"><span class="date" title="日期"><i class="iconfont">{{{'&#xe604;'}}}</i></span><span
+                                class="eliminate" title="删除"><i class="iconfont">{{{'&#xe606;'}}}</i></span></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="Mapbtnbox" style="padding-bottom: 5px;text-align: center">
+            <input type="button" class="colorbutton" id="dispatch" value="查询轨迹" onclick="cxgj()">
+        </div>
+    </div>
+</script>
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "grid",
+        module: ["/medias/src/gps/map/getMap.js", "/medias/src/gps/gjbf/gjbf_config.js", "/medias/src/gps/gjbf/gjbf.js"]
+    });
+</script>
+</body>
+</html>

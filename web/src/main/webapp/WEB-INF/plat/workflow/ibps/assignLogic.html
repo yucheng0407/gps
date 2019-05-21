@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>表单赋值逻辑页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["zTree", "/medias/style/plat/form/jquery/jquery.layout.css",
+                "/medias/style/plat/assignLogic/formFormula.css",
+                "/medias/style/plat/assignLogic/style.css",
+                "/medias/style/plat/codemirror/lib/codemirror.css",
+                "/medias/style/plat/codemirror/addon/hint/show-hint.css"]
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <div class="ui-layout-west">
+        <div class="layout-header ">
+            <h5>表单以及字段</h5>
+        </div>
+        <div class="niceScroll" data-name="formVerify">
+            <div id="boTree" class="ztree" style="height:100%;overflow: auto;"></div>
+        </div>
+    </div>
+    <div class="ui-layout-center">
+        <div class="wrapper wrapper-content ">
+            <div class="formula-head">
+                <span class="formula-name">公式</span><span class="formula-equal">=</span>
+            </div>
+            <div class="formula-content">
+                <textarea class="cm-s-default" id="formula"></textarea>
+            </div>
+            <div class="formula-foot">
+                <ul>
+                    <li>请从左侧面板选择包含的字段名</li>
+                    <li>支持<span class="red">英文</span>运算符模式下的<a class="x-c-key">基础运算</a>(+-*/等)及部分<a target="_blank"
+                                                                                                    href="#"
+                                                                                                    class="x-c-key">高级函数</a>
+                    </li>
+                    <li>公式编辑样式举例:<span class="formula-key">SUM</span>(<span class="formula-field">基本工资</span>,<span
+                            class="formula-field">加班工资</span>)
+                    </li>
+                    <!--<li>该公式计算后保证返回的值是<span class="red">布尔值（true或false）</span></li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: ["zTree", '/medias/src/plat/form/lib/jquery/plugins/jquery.layout.min.js',
+            "/medias/plugin/codemirror/lib/codemirror.min.js",
+            "/medias/plugin/codemirror/addon/hint/show-hint.js",
+            "/medias/plugin/codemirror/mode/formula/formula-mode.js",
+            "/medias/plugin/codemirror/mode/formula/formula-hint.js",
+            "/medias/src/plat/workflow/ibps/formulaEditor.js",
+            '/medias/src/plat/workflow/ibps/assignLogic.js']
+    });
+</script>
+</body>
+</html>

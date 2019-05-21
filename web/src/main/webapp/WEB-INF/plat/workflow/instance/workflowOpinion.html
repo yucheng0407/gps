@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="layout" content="main"/>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: ["wfopinion"]
+        });
+    </script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="workflow_timeline_top">
+    <h1>流程图列表</h1>
+    <i class="iconfont closer" title="关闭">&#xe609;</i>
+    <i class="iconfont switch" title="切换">&#xe671;</i>
+</div>
+<div class="ibox_content_timeline_box">
+    <script type="text/template">
+        <div>
+            {{#if data.length>0}}
+            {{#each data:index}}
+            <div class="timeline_item">
+                {{#if lastNode}}
+                <div class="col_xs_left">
+                    <i class="iconfont end_icon {{#if !sortType}}reverse_order_icon{{/if}}" title="结束">{{{"&#xe6fd;"}}}</i>
+                </div>
+                <div class="col_xs_right js_end {{#if !sortType}}reverse_order{{/if}}">
+                    <div class="m_b_xs {{#if !sortType}}reverse_order_h{{/if}}">
+                        <h3>结束</h3>
+                    </div>
+                </div>
+                {{else}}
+                <div class="col_xs_left">
+                    <div class="briefcase {{class}}">
+                        <i class="iconfont" title="{{name}}">{{{icon}}}</i>{{name}}
+                    </div>
+                    {{#if !firstNode}}<strong>{{nodeName}}</strong>{{/if}}
+                </div>
+                <div class="col_xs_right {{#if index==0}}no_top_border{{/if}}">
+                    <div class="m_b_xs">
+                        <h1>{{userName}}</h1>
+                        <span>{{handleDate}}</span>
+                    </div>
+                    <p class="bm">{{#if organName}} ({{organName}}) {{/if}}</p>
+                    <p>{{opinion}}</p>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+            {{/if}}
+        </div>
+    </script>
+</div>
+<script type="text/javascript">
+    RX.page.resize = function () {
+        $(".ibox_content_timeline_box").outerHeight($(window).outerHeight() - $(".workflow_timeline_top").outerHeight() - 1);
+    };
+    RX.load({
+        template: "form",
+        module: ["/medias/src/plat/workflow/instance/workflowOpinion.js"]
+    });
+</script>
+</body>
+</html>
+

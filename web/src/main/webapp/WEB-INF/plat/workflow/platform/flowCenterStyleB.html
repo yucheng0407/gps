@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title></title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: [
+                "/medias/plugin/intro/introjs.css"
+            ]
+        });
+
+    </script>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        .downLink {
+            position: relative;
+        }
+
+        .downUl {
+            z-index: 3;
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: -10px;
+            width: 50px;
+            height: 120px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: 0;
+            padding: 5px 10px;
+            border-radius: 0 0 2px 2px;
+            box-shadow: 0px 1px 4px 0 #cecece;
+        }
+
+        .downUl li {
+            line-height: 20px;
+        }
+
+        .downUl li a {
+            float: left;
+            margin: 5px;
+            margin-right: 0px;
+        }
+
+        .downUl li a.selected {
+            color: #0e9aef;
+        }
+
+        .downLink:hover .downUl {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<div class="homepage">
+    <div id="numArea">
+        <script type="template">
+            <ul class="act_navspec_list">
+                <li>
+                    <div class="item_1">
+                        <a href="#none" style="border-bottom: 3px solid #ff9974;" on-click="chooseFlow()"><span style="background: #ff9974;">
+                            <i class="iconfont">{{{'&#xe612;'}}}</i></span>
+                            <h3 class="widget_wc_table">可发起工作</h3>
+                            <h3 class="widget_wc_score">{{flowNum}}</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="item_1">
+                        <a href="#none" style="border-bottom: 3px solid #ff6f6f;" on-click="dbList()"><span style="background: #ff6f6f;"><i
+                                class="iconfont">{{{'&#xe631;'}}}</i></span>
+                            <h3 class="widget_wc_table">待办工作</h3>
+                            <h3 class="widget_wc_score">{{dbrwNum}}</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="item_1">
+                        <a href="#none" style="border-bottom: 3px solid #0e9aef;" on-click="zbList()"><span style="background: #0e9aef;"><i
+                                class="iconfont">{{{'&#xe621;'}}}</i></span>
+                            <h3 class="widget_wc_table">在办工作</h3>
+                            <h3 class="widget_wc_score">{{zblcNum}}</h3></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="item_1">
+                        <a href="#none" style="border-bottom: 3px solid #1ecbd9;"  on-click="ybList()"><span style="background: #1ecbd9;"><i
+                                class="iconfont">{{{'&#xe638;'}}}</i></span>
+                            <h3 class="widget_wc_table">已办工作</h3>
+                            <h3 class="widget_wc_score">{{ybrwNum}}</h3></a>
+                    </div>
+                </li>
+            </ul>
+        </script>
+    </div>
+    <div class="m_box">
+        <div class="b_box" style="width: 100%;">
+            <div class="x_box">
+                <div class="boxcenter">
+                    <div class="hdd">
+                        <div class="boxcentertop">
+                            <h1>办理工作</h1>
+                        </div>
+                        <div class="boxbody" style="padding:20px 0px 20px 0px;">
+                            <div class="ibox_content" id="flowArea" style="overflow-y: auto;height:200px;">
+                                <script type="template">
+                                    <ul class="tbtx">
+                                        {{#if list && list.length}}
+                                        {{#each list:index}}
+                                        <li>
+                                            <a href="#none" on-click="clickItem($keypath)"><span><i class="iconfont">{{{'&#xe631;'}}}</i></span>
+                                                {{#if DBRW_NUM && DBRW_NUM != "0"}}
+                                                <em>{{#if DBRW_NUM > 99}}99+{{else}}{{DBRW_NUM}}{{/if}}</em>
+                                                {{/if}}
+                                                <p>{{WF_NAME}}</p>
+                                            </a>
+                                        </li>
+                                        {{/each}}
+                                        {{/if}}
+                                    </ul>
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m_box">
+        <div class="b_box" style="width: 100%;">
+            <div class="x_box">
+                <div class="boxcenter">
+                    <div class="hdd">
+                        <div id="timeArea">
+                            <script type="template">
+                                <div class="boxcentertop">
+                                    <h1>办理统计</h1>
+                                    <a href="#none" on-click="clickMore()"><i class="iconfont">{{{'&#xe6a4;'}}}</i></a>
+                                    <span class="split"></span>
+                                    <a href="#none" class="downLink"><i class="iconfont">{{{'&#xe604;'}}}</i>{{timeName}}
+                                        <ul class="downUl">
+                                            <li><a href="#none" on-click="changeTime('day','一天内')" {{#if
+                                                   timeType=='day'}}class="selected"{{/if}}><i class="iconfont"></i>一天内</a>
+                                            </li>
+                                            <li><a href="#none" on-click="changeTime('week','一周内')" {{#if
+                                                   timeType=='week'}}class="selected"{{/if}}><i
+                                                    class="iconfont"></i>一周内</a>
+                                            </li>
+                                            <li><a href="#none" on-click="changeTime('month','一月内')" {{#if
+                                                   timeType=='month'}}class="selected"{{/if}}><i
+                                                    class="iconfont"></i>一月内</a></li>
+                                            <li><a href="#none" on-click="changeTime('year','一年内')" {{#if
+                                                   timeType=='year'}}class="selected"{{/if}}><i
+                                                    class="iconfont"></i>一年内</a></li>
+                                        </ul>
+                                    </a>
+                                </div>
+                            </script>
+                        </div>
+                        <div style="float:left;width:31.5%">
+                            <div class="boxbody">
+                                <div class="ibox_content" style="height:300px;">
+                                    <div id="pie1" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="float:left;width:31.5%">
+                            <div class="boxbody">
+                                <div class="ibox_content" style="height:300px;">
+                                    <div id="pie2" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="float:left;width:31.5%">
+                            <div class="boxbody">
+                                <div class="ibox_content" style="height:300px;">
+                                    <div id="pie3" style="height:300px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "workflow",
+            "/medias/plugin/highcharts/highcharts.js",
+            "/medias/plugin/highcharts/modules/no-data-to-display.js",
+            "/medias/plugin/intro/intro.js",
+            "/medias/src/plat/workflow/platform/flowCenterStyleB.js"
+        ]
+    });
+</script>
+</body>
+
+</html>

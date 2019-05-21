@@ -1,0 +1,77 @@
+<div class="form_box" style="padding: 0">
+    <script type="text/template">
+        <div>
+            {{#if latest.length>1}}
+            <div class="qtip_page">
+                <a href="javascript:void(0)" class="prev"><i class="iconfont">{{{'&#xe64a;'}}}</i></a>
+                <select class="i_select">
+                    {{#each latest:index}}
+                    <option value="{{index}}">{{(user_id.userName||'')+'('+(action||'')+')'}}</option>
+                    {{/each}}
+                </select>
+                <a href="javascript:void(0)" class="next"><i class="iconfont">{{{'&#xe63f;'}}}</i></a>
+            </div>
+            {{/if}}
+            {{#each latest:index}}
+            <table class="form_view transactor{{index}}" border="0" cellspacing="0" cellpadding="0"
+                   {{#if index>0}}
+                style="display: none"
+                {{/if}}>
+                <colgroup>
+                    <col width="80px"/>
+                    <col/>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <th>办理动作</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{action||''}}">{{action||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>任务状态</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{status||''}}">{{status||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>办理人</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{user_id.userName||''}}">{{user_id.userName||''}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>派发时间</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{date(cjsj,'yyyy-MM-dd HH:mm:ss')}}">{{date(cjsj,'yyyy-MM-dd HH:mm:ss')}}</span>
+                    </td>
+                </tr>
+                {{#if status!='待办'}}
+                <tr>
+                    <th>签收时间</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{date(accept_date,'yyyy-MM-dd HH:mm:ss')}}">{{date(accept_date,'yyyy-MM-dd HH:mm:ss')}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>结束时间</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{date(finish_date,'yyyy-MM-dd HH:mm:ss')}}">{{date(finish_date,'yyyy-MM-dd HH:mm:ss')||'未结束'}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>环节意见</th>
+                    <td>
+                        <span class="span_show_ellipsis" title="{{opinion||''}}">{{opinion||'无'}}</span>
+                    </td>
+                </tr>
+                {{/if}}
+                </tbody>
+            </table>
+            {{/each}}
+            {{#if list&&list.length>1}}
+            <a href="javascript:void(0)" class="more-history">查看更多流转历史</a>
+            {{/if}}
+        </div>
+    </script>
+</div>

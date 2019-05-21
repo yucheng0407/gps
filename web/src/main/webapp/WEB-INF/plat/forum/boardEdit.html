@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>版块编辑</title>
+<script src="${ctxPath}/medias/rx.load.js"></script>
+<script type="text/javascript">
+    RX.loadCSS({template: "platMain"});
+</script>
+<style>
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        background: #fff;
+    }
+</style>
+<body>
+
+<!--基础布局-->
+<div class="form_box">
+    <!--表单模板-->
+    <script type="text/template">
+        <div>
+            <div class="p_box">
+                <div class="page_title">
+                    <h1>版块基本信息</h1>
+                </div>
+                <table class="form" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <th><b>*</b>版本编码</th>
+                        <td>
+                            <div class="element_box">
+                                <input title="" type="text" class="i_text" model="code"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><b>*</b>版块标题</th>
+                        <td>
+                            <div class="element_box">
+                                <input title="" type="text" class="i_text" model="title"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><b>*</b>版主</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="moderator"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>版块图标</th>
+                        <td>
+                            <div class="element_box">
+                                <input type="text" class="i_text" model="icon"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>描述</th>
+                        <td>
+                            <div class="element_box">
+                                <textarea title="" class="i_textarea" model="description"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </script>
+</div>
+
+<!-- 下面按钮 -->
+<div class="w_button_box" id="w_butt">
+</div>
+
+<!--文件加载-->
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/forum/boardEdit_config.js",
+            "/medias/src/plat/forum/boardEdit.js"
+        ]
+    });
+</script>
+</body>
+</html>

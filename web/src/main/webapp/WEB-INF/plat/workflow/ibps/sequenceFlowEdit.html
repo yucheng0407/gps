@@ -1,0 +1,31 @@
+<div>
+    <div class="form_box">
+        <div class="ui-layout-west">
+            <div class="layout-header ">
+                <h5>变量</h5>
+            </div>
+            <div class="niceScroll" data-name="formVerify">
+                <div id="variableTree" class="ztree" style="height:100%;overflow: auto;"></div>
+            </div>
+        </div>
+        <div class="ui-layout-center">
+            <div class="wrapper wrapper-content">
+                <div class="formula-head">
+                    <span class="formula-name">公式</span>
+                </div>
+                <div class="formula-content ">
+                    <textarea class="cm-s-default" id="formula"></textarea>
+                </div>
+                <div class="formula-foot">
+                    <ul><!--[WF:CL_TYPE]-->
+                        <li style="color: red">请从左侧面板选择包含的变量（路由条件的流程变量是前一个决策环节配置的）</li>
+                        <li style="color: #999">格式：SFJLSP=2 （SFJLSP:流程变量名;2:流程变量比较值）</li>
+                        <li style="color: #999">扩展写法1：CL_TYPE>2 （流程变量值大于2）</li>
+                        <li style="color: #999">扩展写法2：CL_TYPE<>2 （流程变量值不等于2）</li>
+                        <li style="color: #999">扩展写法3：CL_TYPE=1 OR CL_TYPE=2 （流程变量值等于1或2）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

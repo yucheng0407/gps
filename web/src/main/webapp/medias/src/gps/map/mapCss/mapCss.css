@@ -1,0 +1,272 @@
+/*地图*/
+.mapTool {
+    position: absolute;
+    top: 90px;
+    right: 20px;
+    width: 30px;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+.mapTool ul {
+    width: 100%;
+    height: auto;
+}
+
+.mapTool ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mapTool ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.mapTool ul li a i {
+    color: #3b7dd6;
+}
+
+.extensionTool {
+    position: absolute;
+    top: 290px;
+    right: 20px;
+    width: 30px;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+
+.extensionTool ul {
+    width: 100%;
+    height: auto;
+}
+
+.extensionTool ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.extensionTool ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.extensionTool ul li a i {
+    color: #3b7dd6;
+}
+
+.maptype {
+    width: auto;
+    height: 65px;
+    background: #fff;
+    padding: 10px 0 5px 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    z-index: 999;
+    border-radius: 2px 0 0 0;
+    cursor: pointer;
+}
+
+.maptypeCard {
+    width: 86px;
+    height: 60px;
+    border: 1px solid #fff;
+    float: left;
+    margin: 0 5px;
+    border-radius: 2px;
+    position: relative;
+}
+
+.maptypeCard:hover {
+    border: 1px solid #1eb499;
+}
+
+/*.m1{background: url("/mhsj/medias/style/images/mhsj/map.png") no-repeat 0 0;}*/
+/*.m2{background: url("/mhsj/medias/style/images/mhsj/wxmap.png") no-repeat 0 0;}*/
+/*.m3{background: url("/mhsj/medias/style/images/mhsj/map.gif") no-repeat 0 0;}*/
+.selected {
+    border: 1px solid #1eb499;
+}
+
+.maptypeCard span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    background: #1eb499;
+    color: #fff;
+    padding: 0 3px;
+    border-radius: 2px 0 0 0;
+}
+
+.mapApp {
+    position: absolute;
+    top: 90px;
+    right: 90px;
+    width: auto;
+    height: auto;
+    background: #FFF;
+    border: 1px solid #dbdbdb;
+}
+
+.mapApp ul {
+    width: 100%;
+    height: auto;
+}
+
+.mapApp ul li {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.mapApp ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+}
+
+.mapApp ul li a i {
+    color: #3b7dd6;
+}
+
+#mapSidebar {
+
+
+    display: none
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.move li a {
+    line-height: 2.5em;
+    width: 100%;
+}
+
+.move li {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+.move i {
+    font-size: 20px;
+    color: #252020;
+}
+
+/*图标动画效果*/
+#mapSidebarContent a i:hover, .mapTool a i:hover, .extensionTool a i:hover {
+    font-size: 30px
+}
+
+.openTool {
+    position: absolute;
+    width: 110px;
+    top: 40px;
+    background-color: #393a3d;
+    border-radius: 3px;
+    display: none;
+}
+
+.openTool i {
+    color: #fff;
+}
+
+.openTool:after {
+    content: "";
+    border-bottom: 7px solid #393a3d;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: 30px;
+    left: 5%;
+}
+
+.dextra-bubble-pop {
+    position: absolute;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+    background-color: #FFF;
+    border-radius: 2px;
+    padding: 1px 2px;
+    /*border: 1px solid #2f4056;*/
+}
+.dextra-bubble-edit {
+    position: absolute;
+    z-index: 100;
+    box-sizing: border-box;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .15);
+    background-color: #FFF;
+    border-radius: 2px;
+    padding: 1px 2px;
+    -webkit-user-select: none;
+    -moz-user-select:none;
+    -ms-user-select: none;
+    user-select: none;
+    /*border: 1px solid #2f4056;*/
+}
+.dextra-bubble-pop:after {
+    content: "";
+    border-top: 7px solid #fff;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    position: absolute;
+    bottom: -8px;
+    left: 45%;
+}
+
+.esriPopup .content{
+    margin: 0;
+}
+
+/*地图视频*/
+.video_box{width:380px;height:auto;position:absolute;top: 266px;left: 20px;z-index: 9999999999999;background: #f8f8f8;border: 1px solid #e2e2e2;border-radius: 2px;box-shadow:0 2px 4px 0 #b0b0b0;}
+.video_top{position: relative;width: 100%;height: 24px;line-height: 24px;border-bottom: 1px solid #e2e2e2;cursor: move}
+.video_top i{float: right;margin-right: 5px;color: #888;cursor: pointer;font-size: 16px;}
+.video_top i:hover{color: #cecece;}
+.video_icon_box{width: auto;padding: 0 20px;height: 36px;}
+.video_icon{margin: 0 auto;width: 216px;height: 100%;}
+.video_icon li{float: left;width: 36px;height: 36px;}
+.video_icon li a{display: block;line-height: 36px;text-align: center;}
+.video_icon li a i{color: #888;font-size: 18px;}
+.video_icon li a:hover i{color: #cecece;}
+/*空间查询*/
+.tubiao{width: 220px;height: auto;}
+.tubiao-ul{float: left;width: 100%;}
+.tubiao-ul li{float: left;display: inline;margin: 25px 15px 0;}
+.tubiao-ul li a{float: left;display: block;width:80px;height:80px;text-align: center;color: #3b7dd6;font-size:14px;overflow: hidden;transition:All 0.4s ease-in-out;}
+.tubiao-ul li a:hover{background:#dcdcdc;transform:scale(1.25);}
+.tubiao-ul li a i{display: block;margin:20px auto 15px;font-size:36px;color: #3b7dd6;}
+
+.hint {
+    position: absolute;
+    top: 90px;
+    left: 20px;
+    height: auto;
+    font-size: 20px;
+    display: none;
+    color:red;
+}

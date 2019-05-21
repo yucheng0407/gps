@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>环节表单权限</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain"
+        });
+    </script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .form tr th {
+            /*height: 40px;*/
+            /*text-align: center;*/
+            /*font-size: 16px;*/
+            /*padding-top: 10px !important;*/
+            /*background-color: #36D7B7 !important;*/
+            /*color: white;*/
+            /*border: 1px solid #EFEFEF !important;*/
+            text-align: left;
+        }
+
+        tbody.sub {
+            border: 2px solid #c3c3c3 !important;
+        }
+    </style>
+</head>
+<body>
+<div class="form_box">
+    <script type="text/template">
+        <div class="p_box">
+            <table class="form" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                <tr>
+                    <th width="15%">字段</th>
+                    <th width="20%">只读权限</th>
+                    <th width="20%">编辑权限</th>
+                    <th width="20%">必填权限</th>
+                </tr>
+                </thead>
+                {{#if tables.length}}
+                {{#each tables:index}}
+                <tbody class="sub">
+                {{#if type == "sub" || subFields.length}}
+                <tr>
+                    <td colspan="4">{{name}}</td>
+                </tr>
+                <!--拼接buttons-->
+                {{#if buttons}}
+                {{/if}}
+                {{/if}}
+                <!--拼接字段-->
+                {{#if fields.length}}
+                {{#each fields:index1}}
+                <tr class="{{type}}" data-id="{{formId}}" data-code="{{code}}">
+                    <td>{{label}}</td>
+                    <!--只读-->
+                    <td class="field-rights" data-type="read">
+                        <input type="radio" name="{{code}}{{formId}}" {{#if read}}checked{{/if}}/>
+                    </td>
+                    <!--编辑-->
+                    <td class="field-rights" data-type="edit">
+                        <input type="radio" name="{{code}}{{formId}}" {{#if edit}}checked{{/if}}/>
+                    </td>
+                    <!--必填-->
+                    <td class="field-rights" data-type="required">
+                        <input type="checkbox" name="{{code}}{{formId}}" {{#if required}}checked{{/if}}/>
+                    </td>
+                </tr>
+                {{/each}}
+                {{/if}}
+                {{#if subFields.length}}
+                {{#each subFields:index1}}
+                <tr class="{{type}}" data-id="{{formId}}" data-code="{{code}}">
+                    <td>{{label}}</td>
+                    <!--只读-->
+                    <td class="field-rights" data-type="read">
+                        <input type="radio" name="{{code}}{{formId}}" {{#if read}}checked{{/if}}/>
+                    </td>
+                    <!--编辑-->
+                    <td class="field-rights" data-type="edit">
+                        <input type="radio" name="{{code}}{{formId}}" {{#if edit}}checked{{/if}}/>
+                    </td>
+                    <!--必填-->
+                    <td class="field-rights" data-type="required">
+                        <input type="checkbox" name="{{code}}{{formId}}" {{#if required}}checked{{/if}}/>
+                    </td>
+                </tr>
+                {{/each}}
+                {{/if}}
+                {{/each}}
+                </tbody>
+                {{/if}}
+            </table>
+        </div>
+    </script>
+</div>
+<div class="w_button_box">
+    <input type="button" id="save" value="保存" class="c_button"/>
+    <input type="button" id="close" value="关闭" class="n_button"/>
+</div>
+<script type="text/javascript">
+    RX.load({
+        template: "form",
+        module: [
+            "/medias/src/plat/workflow/ibps/nodePageAuth.js"]
+    });
+</script>
+</body>
+</html>

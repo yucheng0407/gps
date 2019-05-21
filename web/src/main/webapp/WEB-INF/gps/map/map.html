@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <title>资源列表页面</title>
+    <script src="${ctxPath}/medias/rx.load.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="${ctxPath}/medias/style/gps/map/mapCss/iconfont.css" />-->
+   <!--<script type="text/javascript" src="http://10.172.1.160:8080/arcgis_js_api/library/3.15/3.15/init.js"></script>-->
+    <script type="text/javascript">
+        RX.loadCSS({
+            template: "platMain",
+            module: [
+                "/medias/src/gps/map/mapCss/iconfont.css",
+                "/medias/src/gps/map/mapCss/mapCss.css",
+                "/medias/src/gps/map/mapCss/InfoWindow.css",
+                "/medias/src/gps/map/mapCss/progress.css"
+            ]
+        });
+    </script>
+    <script>
+        var dojoConfig = {
+            async: true,
+            //注册路径
+            packages: [{
+                name: "RXMap",
+                location: "/gps/medias/src/gps/map"
+            }]
+        };
+        RX.load({
+            template: "grid",
+            async: false,
+            module: [
+                "button",
+                // "http://10.172.1.160:8080/arcgis_js_api/library/3.15/3.15/init.js",
+                "http://192.168.0.117:8080/arcgis_js_api/library/3.15/3.15/init.js",
+                "/medias/src/gps/map/progress.js",
+                "/medias/src/gps/map/getMap.js",
+                "/medias/src/gps/map/createMap.js"
+            ]
+        });
+    </script>
+
+
+    <!--<link rel="stylesheet"-->
+          <!--href="http://10.172.1.160:8080/arcgis_js_api/library/3.15/3.15/dijit/themes/tundra/tundra.css">-->
+    <!--<link rel="stylesheet" href="http://10.172.1.160:8080/arcgis_js_api/library/3.15/3.15/esri/css/esri.css">-->
+    <link rel="stylesheet"
+          href="http://192.168.0.117:8080/arcgis_js_api/library/3.15/3.15/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" href="http://192.168.0.117:8080/arcgis_js_api/library/3.15/3.15/esri/css/esri.css">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .imgMap {
+            margin-top: 7px;
+        }
+
+        .imgMap:hover {
+            margin-top: 0px;
+            height: 29px;
+            width: 29px;
+        }
+    </style>
+</head>
+<body>
+
+<!--主地图-->
+<div id="mainMap" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 0;">
+    <div id="map" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 0;"></div>
+    <div class="hint">按住CTRL调用吸附</div>
+    <!--地图工具-->
+    <div class="mapTool">
+        <ul>
+            <li>
+                <a href="#none" title="放大" data-tool="expand" class="map-tool-button"><i
+                        class="iconfont">&#xe610;</i></a>
+            </li>
+            <li>
+                <a href="#none" title="缩小" data-tool="reduce" class="map-tool-button"><i
+                        class="iconfont">&#xe617;</i></a>
+            </li>
+            <li>
+                <a href="#none" title="全部范围" data-tool="allExtent" class="map-tool-button"><i
+                        class="iconfont">&#xe63b;</i></a>
+            </li>
+            <li>
+                <a href="#none" title="清除" data-tool="clearMap" class="map-tool-button"><i class="iconfont">&#xe643;</i></a>
+            </li>
+            <li>
+                <!--<i class="iconfont">&#59058;</i>-->
+                <!--<a href="#none" title="测距" data-tool="measureDistance" class="map-tool-button"><i class="iconfont">&#xeaaa;</i></a>-->
+                <a href="#none" title="测距" data-tool="measureDistance" class="map-tool-button"><img class="imgMap"
+                                                                                                    src="${ctxPath}/medias/src/gps/map/mapCss/img/cj.png"></a>
+            </li>
+            <li>
+                <!--<i class="iconfont">&#xe6ef;</i>-->
+                <a href="#none" title="测面" data-tool="mapGlobalasureArea" class="map-tool-button"><img class="imgMap"
+                                                                                                       src="${ctxPath}/medias/src/gps/map/mapCss/img/cm.png"></a>
+            </li>
+            <li>
+                <!--<i class="iconfont">&#xe738;</i>-->
+                <a href="#none" title="注记" data-tool="mapLabel" class="map-tool-button"><img class="imgMap"
+                                                                                             src="${ctxPath}/medias/src/gps/map/mapCss/img/bz.png"></a>
+            </li>
+            <!--<li>-->
+            <!--<a href="#none" title="截图" data-tool="screenShot" class="map-tool-button"><i class="iconfont">&#xe647;</i></a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+
+    <!--地图底图-->
+    <div class="maptype">
+    </div>
+
+    <div id="mapSidebar" class="video_box">
+        <div class="video_top">
+            <a href="#none" data-tool="track" class="close"><i style="color:#828282;"
+                                                               class="iconfont">&#xe609;</i></a>
+        </div>
+        <div id="mapProgress" style="width: 100%;">
+        </div>
+        <div id="mapSidebarContent">
+
+        </div>
+    </div>
+
+    <!--<div class="mapApp">-->
+    <!--<ul>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="track" class="map-tool-button"><i class="iconfont">&#xe63b;</i> 移动轨迹</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="mapDraw" class="map-tool-button"><i class="iconfont">&#xe63b;</i> 常规标绘</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="militaryDraw" class="map-tool-button"><i class="iconfont">&#xe633;</i>-->
+    <!--军事标绘</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="doubleMap" class="map-tool-button"><i class="iconfont">&#xe633;</i> 地图分屏</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="colormap" class="map-tool-button"><i class="iconfont">&#xe633;</i> 分层设色图</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="heatMap" class="map-tool-button"><i class="iconfont">&#xe633;</i> 热力图</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="pieMap" class="map-tool-button"><i class="iconfont">&#xe633;</i> 饼图</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="columnMap" class="map-tool-button"><i class="iconfont">&#xe633;</i> 柱状图</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="cluster" class="map-tool-button"><i class="iconfont">&#xe633;</i> 聚类</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#none" data-tool="xzqh" class="map-tool-button"><i class="iconfont">&#xe633;</i> 行政区划</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+
+    <!--<div id="mapProgress" style="background: red;width: 500px; position: absolute;bottom: 50px;left: 50px">-->
+    <!--</div>-->
+    <div id="xy" style="width: 500px; position: absolute;bottom: 5px;left: 5px">
+    </div>
+</div>
+<!--分屏地图-->
+<!--<div id="secondMap" style="width: 0%;height: 100%;position: absolute;top: 0;right: 0;z-index: 0;">-->
+<!--<div id="map2" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;z-index: 0;"></div>-->
+<!--&lt;!&ndash;地图模式&ndash;&gt;-->
+<!--<div class="maptype"></div>-->
+<!--<div class="closeSecondMap" style="text-align: right;position: absolute;right: 0">-->
+<!--<a href="#none"><i style="color:#00000087;" class="iconfont">&#xe609;</i></a>-->
+<!--</div>-->
+<!--</div>-->
+
+</body>
+
+</html>
